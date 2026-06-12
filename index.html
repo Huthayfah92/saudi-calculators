@@ -3,126 +3,233 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>الحاسبة السعودية</title>
+<title>مركز الحاسبات السعودية</title>
 
 <style>
 body{
 font-family:Arial,sans-serif;
-background:#f5f5f5;
-padding:20px;
-max-width:900px;
+background:#f4f6f8;
+margin:0;
+padding:0;
+color:#222;
+}
+
+header{
+background:#0f172a;
+color:white;
+padding:30px 20px;
+text-align:center;
+}
+
+.container{
+max-width:1000px;
 margin:auto;
+padding:20px;
 }
 
 .card{
 background:white;
 padding:20px;
 margin-bottom:20px;
-border-radius:10px;
-box-shadow:0 2px 5px rgba(0,0,0,.1);
+border-radius:14px;
+box-shadow:0 4px 12px rgba(0,0,0,.08);
 }
 
-input{
+label{
+font-weight:bold;
+display:block;
+margin-top:10px;
+}
+
+input, select{
 width:100%;
-padding:10px;
-margin-top:5px;
-margin-bottom:10px;
+padding:12px;
+margin-top:6px;
+border:1px solid #ddd;
+border-radius:8px;
+font-size:16px;
+box-sizing:border-box;
 }
 
 button{
-padding:10px 20px;
+width:100%;
+padding:14px;
+margin-top:15px;
+border:0;
+border-radius:8px;
+background:#2563eb;
+color:white;
+font-size:17px;
 cursor:pointer;
 }
 
 .result{
+background:#f1f5f9;
+padding:15px;
+border-radius:8px;
+margin-top:15px;
 font-weight:bold;
-margin-top:10px;
+line-height:1.8;
+}
+
+.note{
+font-size:14px;
+color:#666;
+line-height:1.8;
+}
+
+footer{
+text-align:center;
+padding:20px;
+color:#777;
+font-size:14px;
 }
 </style>
 </head>
 
 <body>
 
-<h1>الحاسبة السعودية</h1>
+<header>
+<h1>مركز الحاسبات السعودية</h1>
+<p>حاسبات مالية ووظيفية مبسطة للموظفين في السعودية</p>
+</header>
+
+<div class="container">
 
 <div class="card">
-<h2>حاسبة الراتب</h2>
+<h2>حاسبة الراتب السعودي</h2>
 
 <label>الراتب الأساسي</label>
-<input id="salary" type="number">
+<input id="salary" type="number" placeholder="مثال: 6000">
 
 <label>بدل السكن</label>
-<input id="housing" type="number">
+<input id="housing" type="number" placeholder="مثال: 1500">
 
 <label>بدل النقل</label>
-<input id="transport" type="number">
+<input id="transport" type="number" placeholder="مثال: 500">
 
-<button onclick="salaryCalc()">احسب</button>
+<button onclick="salaryCalc()">احسب صافي الراتب</button>
 
 <div id="salaryResult" class="result"></div>
+
+<p class="note">
+تحسب هذه الأداة إجمالي الراتب وصافي الراتب بعد استقطاع التأمينات بنسبة تقديرية 9% من الراتب الأساسي.
+</p>
 </div>
 
 <div class="card">
 <h2>حاسبة التمويل</h2>
 
 <label>مبلغ التمويل</label>
-<input id="loanAmount" type="number">
+<input id="loanAmount" type="number" placeholder="مثال: 100000">
 
-<label>عدد الأشهر</label>
-<input id="months" type="number">
+<label>مدة التمويل بالأشهر</label>
+<input id="months" type="number" placeholder="مثال: 60">
 
-<button onclick="loanCalc()">احسب</button>
+<label>نسبة الربح السنوية (%)</label>
+<input id="rate" type="number" placeholder="مثال: 5">
+
+<button onclick="loanCalc()">احسب القسط</button>
 
 <div id="loanResult" class="result"></div>
+
+<p class="note">
+هذه الحاسبة تعطي تقديرًا مبسطًا للقسط الشهري بناءً على مبلغ التمويل والمدة ونسبة الربح السنوية.
+</p>
 </div>
 
 <div class="card">
-<h2>حاسبة نهاية الخدمة</h2>
+<h2>حاسبة مكافأة نهاية الخدمة</h2>
 
-<label>الراتب الشهري</label>
-<input id="endSalary" type="number">
+<label>آخر راتب شهري</label>
+<input id="endSalary" type="number" placeholder="مثال: 8000">
 
 <label>عدد سنوات الخدمة</label>
-<input id="years" type="number">
+<input id="years" type="number" placeholder="مثال: 5">
 
-<button onclick="serviceCalc()">احسب</button>
+<label>سبب انتهاء العلاقة</label>
+<select id="reason">
+<option value="employer">إنهاء من صاحب العمل</option>
+<option value="resignation">استقالة</option>
+</select>
+
+<button onclick="serviceCalc()">احسب المكافأة</button>
 
 <div id="serviceResult" class="result"></div>
+
+<p class="note">
+الحساب تقديري ومبسط: نصف راتب عن كل سنة من أول خمس سنوات، وراتب كامل عن كل سنة بعدها. النتيجة النهائية قد تختلف حسب تفاصيل العقد والنظام.
+</p>
 </div>
 
+</div>
+
+<footer>
+<p>© 2026 مركز الحاسبات السعودية - النتائج تقديرية وليست استشارة مالية أو قانونية.</p>
+</footer>
+
 <script>
-
 function salaryCalc(){
-let salary=Number(document.getElementById("salary").value);
-let housing=Number(document.getElementById("housing").value);
-let transport=Number(document.getElementById("transport").value);
+let salary = Number(document.getElementById("salary").value) || 0;
+let housing = Number(document.getElementById("housing").value) || 0;
+let transport = Number(document.getElementById("transport").value) || 0;
 
-let total=salary+housing+transport;
+let gross = salary + housing + transport;
+let gosi = salary * 0.09;
+let net = gross - gosi;
 
-document.getElementById("salaryResult").innerHTML=
-"إجمالي الراتب: "+total.toLocaleString()+" ريال";
+document.getElementById("salaryResult").innerHTML =
+`إجمالي الراتب: ${gross.toLocaleString()} ريال<br>
+استقطاع التأمينات: ${gosi.toLocaleString()} ريال<br>
+صافي الراتب: ${net.toLocaleString()} ريال`;
 }
 
 function loanCalc(){
-let amount=Number(document.getElementById("loanAmount").value);
-let months=Number(document.getElementById("months").value);
+let amount = Number(document.getElementById("loanAmount").value) || 0;
+let months = Number(document.getElementById("months").value) || 0;
+let rate = Number(document.getElementById("rate").value) || 0;
 
-let monthly=amount/months;
+if(months === 0){
+document.getElementById("loanResult").innerHTML = "الرجاء إدخال مدة التمويل.";
+return;
+}
 
-document.getElementById("loanResult").innerHTML=
-"القسط الشهري التقريبي: "+monthly.toFixed(2)+" ريال";
+let profit = amount * (rate / 100) * (months / 12);
+let total = amount + profit;
+let monthly = total / months;
+
+document.getElementById("loanResult").innerHTML =
+`إجمالي الربح التقريبي: ${profit.toLocaleString()} ريال<br>
+إجمالي السداد: ${total.toLocaleString()} ريال<br>
+القسط الشهري: ${monthly.toFixed(2)} ريال`;
 }
 
 function serviceCalc(){
-let salary=Number(document.getElementById("endSalary").value);
-let years=Number(document.getElementById("years").value);
+let salary = Number(document.getElementById("endSalary").value) || 0;
+let years = Number(document.getElementById("years").value) || 0;
+let reason = document.getElementById("reason").value;
 
-let reward=(salary/2)*years;
+let reward = 0;
 
-document.getElementById("serviceResult").innerHTML=
-"مكافأة نهاية الخدمة التقديرية: "+reward.toLocaleString()+" ريال";
+if(years <= 5){
+reward = (salary / 2) * years;
+} else {
+reward = (salary / 2) * 5 + salary * (years - 5);
 }
 
+if(reason === "resignation"){
+if(years < 2){
+reward = 0;
+} else if(years >= 2 && years < 5){
+reward = reward / 3;
+} else if(years >= 5 && years < 10){
+reward = reward * 2 / 3;
+}
+}
+
+document.getElementById("serviceResult").innerHTML =
+`مكافأة نهاية الخدمة التقديرية: ${reward.toLocaleString()} ريال`;
+}
 </script>
 
 </body>
