@@ -3,87 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>مركز الحاسبات السعودية</title>
-
+<title>مركز الحاسبات السعودية | حاسبات الراتب والتمويل والاستثمار</title>
+<meta name="description" content="مركز الحاسبات السعودية يقدم حاسبات مجانية للراتب، التمويل، نهاية الخدمة، الاستثمار الشهري، العائد المركب، التقاعد المبكر والقرض الشخصي.">
 <style>
-body{
-font-family:Arial,sans-serif;
-background:#f4f6f8;
-margin:0;
-padding:0;
-color:#222;
-}
-
-header{
-background:#0f172a;
-color:white;
-padding:30px 20px;
-text-align:center;
-}
-
-.container{
-max-width:1000px;
-margin:auto;
-padding:20px;
-}
-
-.card{
-background:white;
-padding:20px;
-margin-bottom:20px;
-border-radius:14px;
-box-shadow:0 4px 12px rgba(0,0,0,.08);
-}
-
-label{
-font-weight:bold;
-display:block;
-margin-top:10px;
-}
-
-input, select{
-width:100%;
-padding:12px;
-margin-top:6px;
-border:1px solid #ddd;
-border-radius:8px;
-font-size:16px;
-box-sizing:border-box;
-}
-
-button{
-width:100%;
-padding:14px;
-margin-top:15px;
-border:0;
-border-radius:8px;
-background:#2563eb;
-color:white;
-font-size:17px;
-cursor:pointer;
-}
-
-.result{
-background:#f1f5f9;
-padding:15px;
-border-radius:8px;
-margin-top:15px;
-font-weight:bold;
-line-height:1.8;
-}
-
-.note{
-font-size:14px;
-color:#666;
-line-height:1.8;
-}
-
-footer{
-text-align:center;
-padding:20px;
-color:#777;
-font-size:14px;
-}
+body{margin:0;font-family:Arial,Tahoma,sans-serif;background:#f4f6f8;color:#1f2937}
+header{background:#0f172a;color:white;padding:36px 20px;text-align:center}
+header h1{margin:0;font-size:34px}
+header p{font-size:18px;color:#cbd5e1}
+nav{background:#111827;padding:12px;text-align:center}
+nav a{color:white;text-decoration:none;margin:8px;display:inline-block;font-size:15px}
+.container{max-width:1050px;margin:auto;padding:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.card{background:white;padding:22px;border-radius:16px;box-shadow:0 4px 14px rgba(0,0,0,.08);margin-bottom:22px}
+h2{margin-top:0;color:#0f172a}
+label{font-weight:bold;display:block;margin-top:12px}
+input,select{width:100%;padding:13px;margin-top:7px;border:1px solid #ddd;border-radius:10px;font-size:16px;box-sizing:border-box}
+button{width:100%;padding:14px;margin-top:16px;border:0;border-radius:10px;background:#2563eb;color:white;font-size:17px;cursor:pointer}
+.result{background:#f1f5f9;padding:16px;border-radius:10px;margin-top:16px;font-weight:bold;line-height:1.9}
+.note{font-size:14px;color:#64748b;line-height:1.8}
+.section-title{text-align:center;margin:35px 0 20px}
+footer{text-align:center;padding:25px;color:#64748b;font-size:14px}
 </style>
 </head>
 
@@ -91,144 +30,248 @@ font-size:14px;
 
 <header>
 <h1>مركز الحاسبات السعودية</h1>
-<p>حاسبات مالية ووظيفية مبسطة للموظفين في السعودية</p>
+<p>حاسبات مالية ووظيفية مجانية للموظفين والمستثمرين في السعودية</p>
 </header>
+
+<nav>
+<a href="#salary">حاسبة الراتب</a>
+<a href="#loan">حاسبة التمويل</a>
+<a href="#end">نهاية الخدمة</a>
+<a href="#monthly-investment">استثمار شهري</a>
+<a href="#compound">العائد المركب</a>
+<a href="#retirement">التقاعد المبكر</a>
+<a href="#personal-loan">القرض الشخصي</a>
+</nav>
 
 <div class="container">
 
-<div class="card">
+<h2 class="section-title">حاسبات الموظفين</h2>
+
+<div class="grid">
+
+<div class="card" id="salary">
 <h2>حاسبة الراتب السعودي</h2>
-
 <label>الراتب الأساسي</label>
-<input id="salary" type="number" placeholder="مثال: 6000">
-
+<input id="salaryBasic" type="number" placeholder="مثال: 6000">
 <label>بدل السكن</label>
-<input id="housing" type="number" placeholder="مثال: 1500">
-
+<input id="salaryHousing" type="number" placeholder="مثال: 1500">
 <label>بدل النقل</label>
-<input id="transport" type="number" placeholder="مثال: 500">
-
+<input id="salaryTransport" type="number" placeholder="مثال: 500">
 <button onclick="salaryCalc()">احسب صافي الراتب</button>
-
 <div id="salaryResult" class="result"></div>
-
-<p class="note">
-تحسب هذه الأداة إجمالي الراتب وصافي الراتب بعد استقطاع التأمينات بنسبة تقديرية 9% من الراتب الأساسي.
-</p>
+<p class="note">حساب تقديري لصافي الراتب بعد استقطاع التأمينات بنسبة 9% من الراتب الأساسي.</p>
 </div>
 
-<div class="card">
-<h2>حاسبة التمويل</h2>
-
-<label>مبلغ التمويل</label>
-<input id="loanAmount" type="number" placeholder="مثال: 100000">
-
-<label>مدة التمويل بالأشهر</label>
-<input id="months" type="number" placeholder="مثال: 60">
-
-<label>نسبة الربح السنوية (%)</label>
-<input id="rate" type="number" placeholder="مثال: 5">
-
-<button onclick="loanCalc()">احسب القسط</button>
-
-<div id="loanResult" class="result"></div>
-
-<p class="note">
-هذه الحاسبة تعطي تقديرًا مبسطًا للقسط الشهري بناءً على مبلغ التمويل والمدة ونسبة الربح السنوية.
-</p>
-</div>
-
-<div class="card">
+<div class="card" id="end">
 <h2>حاسبة مكافأة نهاية الخدمة</h2>
-
 <label>آخر راتب شهري</label>
 <input id="endSalary" type="number" placeholder="مثال: 8000">
-
 <label>عدد سنوات الخدمة</label>
-<input id="years" type="number" placeholder="مثال: 5">
-
+<input id="endYears" type="number" placeholder="مثال: 5">
 <label>سبب انتهاء العلاقة</label>
-<select id="reason">
+<select id="endReason">
 <option value="employer">إنهاء من صاحب العمل</option>
 <option value="resignation">استقالة</option>
 </select>
+<button onclick="endServiceCalc()">احسب المكافأة</button>
+<div id="endResult" class="result"></div>
+<p class="note">الحساب تقديري ومبسط وقد يختلف حسب العقد وتفاصيل الحالة.</p>
+</div>
 
-<button onclick="serviceCalc()">احسب المكافأة</button>
+</div>
 
-<div id="serviceResult" class="result"></div>
+<h2 class="section-title">حاسبات التمويل والاستثمار</h2>
 
+<div class="grid">
+
+<div class="card" id="loan">
+<h2>حاسبة التمويل</h2>
+<label>مبلغ التمويل</label>
+<input id="financeAmount" type="number" placeholder="مثال: 100000">
+<label>مدة التمويل بالأشهر</label>
+<input id="financeMonths" type="number" placeholder="مثال: 60">
+<label>نسبة الربح السنوية (%)</label>
+<input id="financeRate" type="number" placeholder="مثال: 5">
+<button onclick="financeCalc()">احسب القسط</button>
+<div id="financeResult" class="result"></div>
+<p class="note">تعطي هذه الحاسبة تقديرًا للقسط الشهري وإجمالي السداد.</p>
+</div>
+
+<div class="card" id="monthly-investment">
+<h2>حاسبة الاستثمار الشهري</h2>
+<label>المبلغ الشهري</label>
+<input id="monthlyAmount" type="number" placeholder="مثال: 500">
+<label>عدد السنوات</label>
+<input id="monthlyYears" type="number" placeholder="مثال: 10">
+<label>العائد السنوي المتوقع (%)</label>
+<input id="monthlyRate" type="number" placeholder="مثال: 12">
+<button onclick="monthlyInvestmentCalc()">احسب المستقبل</button>
+<div id="monthlyInvestmentResult" class="result"></div>
+<p class="note">مثالية لمعرفة كم قد يصبح استثمارك الشهري مع العائد المركب.</p>
+</div>
+
+<div class="card" id="compound">
+<h2>حاسبة العائد المركب</h2>
+<label>رأس المال الحالي</label>
+<input id="compoundInitial" type="number" placeholder="مثال: 10000">
+<label>الإضافة الشهرية</label>
+<input id="compoundMonthly" type="number" placeholder="مثال: 500">
+<label>عدد السنوات</label>
+<input id="compoundYears" type="number" placeholder="مثال: 15">
+<label>العائد السنوي المتوقع (%)</label>
+<input id="compoundRate" type="number" placeholder="مثال: 10">
+<button onclick="compoundCalc()">احسب العائد المركب</button>
+<div id="compoundResult" class="result"></div>
+<p class="note">توضح أثر الاستثمار طويل المدى والإضافة الشهرية.</p>
+</div>
+
+<div class="card" id="retirement">
+<h2>حاسبة التقاعد المبكر</h2>
+<label>مصروفك الشهري المتوقع</label>
+<input id="retireExpense" type="number" placeholder="مثال: 7000">
+<label>قيمة محفظتك الحالية</label>
+<input id="retireCurrent" type="number" placeholder="مثال: 50000">
+<label>استثمارك الشهري</label>
+<input id="retireMonthly" type="number" placeholder="مثال: 2000">
+<label>العائد السنوي المتوقع (%)</label>
+<input id="retireRate" type="number" placeholder="مثال: 8">
+<button onclick="retirementCalc()">احسب المدة التقريبية</button>
+<div id="retirementResult" class="result"></div>
+<p class="note">تعتمد على قاعدة تقريبية: تحتاج 25 ضعف مصروفك السنوي.</p>
+</div>
+
+<div class="card" id="personal-loan">
+<h2>حاسبة القرض الشخصي</h2>
+<label>مبلغ القرض</label>
+<input id="personalAmount" type="number" placeholder="مثال: 80000">
+<label>مدة السداد بالأشهر</label>
+<input id="personalMonths" type="number" placeholder="مثال: 48">
+<label>النسبة السنوية (%)</label>
+<input id="personalRate" type="number" placeholder="مثال: 6">
+<button onclick="personalLoanCalc()">احسب القرض</button>
+<div id="personalLoanResult" class="result"></div>
+<p class="note">تقدير مبسط للقسط وإجمالي السداد.</p>
+</div>
+
+</div>
+
+<div class="card">
+<h2>من نحن</h2>
 <p class="note">
-الحساب تقديري ومبسط: نصف راتب عن كل سنة من أول خمس سنوات، وراتب كامل عن كل سنة بعدها. النتيجة النهائية قد تختلف حسب تفاصيل العقد والنظام.
+مركز الحاسبات السعودية موقع بسيط يقدم أدوات مجانية تساعد المستخدمين في حساب الرواتب، التمويل، الاستثمار ومكافأة نهاية الخدمة.
+</p>
+</div>
+
+<div class="card">
+<h2>سياسة الخصوصية</h2>
+<p class="note">
+لا نقوم بجمع بيانات شخصية من المستخدمين داخل الحاسبات. جميع العمليات الحسابية تتم داخل المتصفح. النتائج تقديرية وليست استشارة مالية أو قانونية.
 </p>
 </div>
 
 </div>
 
 <footer>
-<p>© 2026 مركز الحاسبات السعودية - النتائج تقديرية وليست استشارة مالية أو قانونية.</p>
+© 2026 مركز الحاسبات السعودية — النتائج تقديرية وليست استشارة مالية أو قانونية.
 </footer>
 
 <script>
+function format(n){return Math.round(n).toLocaleString("ar-SA")}
+
 function salaryCalc(){
-let salary = Number(document.getElementById("salary").value) || 0;
-let housing = Number(document.getElementById("housing").value) || 0;
-let transport = Number(document.getElementById("transport").value) || 0;
-
-let gross = salary + housing + transport;
-let gosi = salary * 0.09;
-let net = gross - gosi;
-
-document.getElementById("salaryResult").innerHTML =
-`إجمالي الراتب: ${gross.toLocaleString()} ريال<br>
-استقطاع التأمينات: ${gosi.toLocaleString()} ريال<br>
-صافي الراتب: ${net.toLocaleString()} ريال`;
+let basic=Number(document.getElementById("salaryBasic").value)||0;
+let housing=Number(document.getElementById("salaryHousing").value)||0;
+let transport=Number(document.getElementById("salaryTransport").value)||0;
+let gross=basic+housing+transport;
+let gosi=basic*0.09;
+let net=gross-gosi;
+document.getElementById("salaryResult").innerHTML=
+`إجمالي الراتب: ${format(gross)} ريال<br>استقطاع التأمينات: ${format(gosi)} ريال<br>صافي الراتب: ${format(net)} ريال`;
 }
 
-function loanCalc(){
-let amount = Number(document.getElementById("loanAmount").value) || 0;
-let months = Number(document.getElementById("months").value) || 0;
-let rate = Number(document.getElementById("rate").value) || 0;
-
-if(months === 0){
-document.getElementById("loanResult").innerHTML = "الرجاء إدخال مدة التمويل.";
-return;
+function endServiceCalc(){
+let salary=Number(document.getElementById("endSalary").value)||0;
+let years=Number(document.getElementById("endYears").value)||0;
+let reason=document.getElementById("endReason").value;
+let reward=0;
+if(years<=5){reward=(salary/2)*years}else{reward=(salary/2)*5+salary*(years-5)}
+if(reason==="resignation"){
+if(years<2){reward=0}
+else if(years<5){reward=reward/3}
+else if(years<10){reward=reward*2/3}
+}
+document.getElementById("endResult").innerHTML=`مكافأة نهاية الخدمة التقديرية: ${format(reward)} ريال`;
 }
 
-let profit = amount * (rate / 100) * (months / 12);
-let total = amount + profit;
-let monthly = total / months;
-
-document.getElementById("loanResult").innerHTML =
-`إجمالي الربح التقريبي: ${profit.toLocaleString()} ريال<br>
-إجمالي السداد: ${total.toLocaleString()} ريال<br>
-القسط الشهري: ${monthly.toFixed(2)} ريال`;
+function financeCalc(){
+let amount=Number(document.getElementById("financeAmount").value)||0;
+let months=Number(document.getElementById("financeMonths").value)||0;
+let rate=Number(document.getElementById("financeRate").value)||0;
+if(months<=0){document.getElementById("financeResult").innerHTML="أدخل مدة صحيحة.";return}
+let profit=amount*(rate/100)*(months/12);
+let total=amount+profit;
+let monthly=total/months;
+document.getElementById("financeResult").innerHTML=
+`إجمالي الربح التقريبي: ${format(profit)} ريال<br>إجمالي السداد: ${format(total)} ريال<br>القسط الشهري: ${format(monthly)} ريال`;
 }
 
-function serviceCalc(){
-let salary = Number(document.getElementById("endSalary").value) || 0;
-let years = Number(document.getElementById("years").value) || 0;
-let reason = document.getElementById("reason").value;
-
-let reward = 0;
-
-if(years <= 5){
-reward = (salary / 2) * years;
-} else {
-reward = (salary / 2) * 5 + salary * (years - 5);
+function monthlyInvestmentCalc(){
+let monthly=Number(document.getElementById("monthlyAmount").value)||0;
+let years=Number(document.getElementById("monthlyYears").value)||0;
+let annualRate=Number(document.getElementById("monthlyRate").value)||0;
+let months=years*12;
+let r=annualRate/100/12;
+let future=0;
+for(let i=0;i<months;i++){future=(future+monthly)*(1+r)}
+let invested=monthly*months;
+let profit=future-invested;
+document.getElementById("monthlyInvestmentResult").innerHTML=
+`إجمالي المبالغ المستثمرة: ${format(invested)} ريال<br>الأرباح المتوقعة: ${format(profit)} ريال<br>القيمة المستقبلية: ${format(future)} ريال`;
 }
 
-if(reason === "resignation"){
-if(years < 2){
-reward = 0;
-} else if(years >= 2 && years < 5){
-reward = reward / 3;
-} else if(years >= 5 && years < 10){
-reward = reward * 2 / 3;
-}
+function compoundCalc(){
+let initial=Number(document.getElementById("compoundInitial").value)||0;
+let monthly=Number(document.getElementById("compoundMonthly").value)||0;
+let years=Number(document.getElementById("compoundYears").value)||0;
+let annualRate=Number(document.getElementById("compoundRate").value)||0;
+let months=years*12;
+let r=annualRate/100/12;
+let future=initial;
+for(let i=0;i<months;i++){future=(future+monthly)*(1+r)}
+let invested=initial+(monthly*months);
+let profit=future-invested;
+document.getElementById("compoundResult").innerHTML=
+`إجمالي رأس المال المدفوع: ${format(invested)} ريال<br>العائد المتوقع: ${format(profit)} ريال<br>القيمة النهائية: ${format(future)} ريال`;
 }
 
-document.getElementById("serviceResult").innerHTML =
-`مكافأة نهاية الخدمة التقديرية: ${reward.toLocaleString()} ريال`;
+function retirementCalc(){
+let expense=Number(document.getElementById("retireExpense").value)||0;
+let current=Number(document.getElementById("retireCurrent").value)||0;
+let monthly=Number(document.getElementById("retireMonthly").value)||0;
+let annualRate=Number(document.getElementById("retireRate").value)||0;
+let target=expense*12*25;
+let r=annualRate/100/12;
+let balance=current;
+let months=0;
+while(balance<target && months<1200){
+balance=(balance+monthly)*(1+r);
+months++;
+}
+let years=months/12;
+document.getElementById("retirementResult").innerHTML=
+`المبلغ المستهدف للتقاعد التقريبي: ${format(target)} ريال<br>المدة المتوقعة للوصول: ${years.toFixed(1)} سنة<br>القيمة المتوقعة: ${format(balance)} ريال`;
+}
+
+function personalLoanCalc(){
+let amount=Number(document.getElementById("personalAmount").value)||0;
+let months=Number(document.getElementById("personalMonths").value)||0;
+let rate=Number(document.getElementById("personalRate").value)||0;
+if(months<=0){document.getElementById("personalLoanResult").innerHTML="أدخل مدة صحيحة.";return}
+let profit=amount*(rate/100)*(months/12);
+let total=amount+profit;
+let monthly=total/months;
+document.getElementById("personalLoanResult").innerHTML=
+`إجمالي الفوائد/الربح التقريبي: ${format(profit)} ريال<br>إجمالي السداد: ${format(total)} ريال<br>القسط الشهري: ${format(monthly)} ريال`;
 }
 </script>
 
