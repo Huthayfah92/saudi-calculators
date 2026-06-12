@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الحاسبة السعودية</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+padding:20px;
+max-width:900px;
+margin:auto;
+}
+
+.card{
+background:white;
+padding:20px;
+margin-bottom:20px;
+border-radius:10px;
+box-shadow:0 2px 5px rgba(0,0,0,.1);
+}
+
+input{
+width:100%;
+padding:10px;
+margin-top:5px;
+margin-bottom:10px;
+}
+
+button{
+padding:10px 20px;
+cursor:pointer;
+}
+
+.result{
+font-weight:bold;
+margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>الحاسبة السعودية</h1>
+
+<div class="card">
+<h2>حاسبة الراتب</h2>
+
+<label>الراتب الأساسي</label>
+<input id="salary" type="number">
+
+<label>بدل السكن</label>
+<input id="housing" type="number">
+
+<label>بدل النقل</label>
+<input id="transport" type="number">
+
+<button onclick="salaryCalc()">احسب</button>
+
+<div id="salaryResult" class="result"></div>
+</div>
+
+<div class="card">
+<h2>حاسبة التمويل</h2>
+
+<label>مبلغ التمويل</label>
+<input id="loanAmount" type="number">
+
+<label>عدد الأشهر</label>
+<input id="months" type="number">
+
+<button onclick="loanCalc()">احسب</button>
+
+<div id="loanResult" class="result"></div>
+</div>
+
+<div class="card">
+<h2>حاسبة نهاية الخدمة</h2>
+
+<label>الراتب الشهري</label>
+<input id="endSalary" type="number">
+
+<label>عدد سنوات الخدمة</label>
+<input id="years" type="number">
+
+<button onclick="serviceCalc()">احسب</button>
+
+<div id="serviceResult" class="result"></div>
+</div>
+
+<script>
+
+function salaryCalc(){
+let salary=Number(document.getElementById("salary").value);
+let housing=Number(document.getElementById("housing").value);
+let transport=Number(document.getElementById("transport").value);
+
+let total=salary+housing+transport;
+
+document.getElementById("salaryResult").innerHTML=
+"إجمالي الراتب: "+total.toLocaleString()+" ريال";
+}
+
+function loanCalc(){
+let amount=Number(document.getElementById("loanAmount").value);
+let months=Number(document.getElementById("months").value);
+
+let monthly=amount/months;
+
+document.getElementById("loanResult").innerHTML=
+"القسط الشهري التقريبي: "+monthly.toFixed(2)+" ريال";
+}
+
+function serviceCalc(){
+let salary=Number(document.getElementById("endSalary").value);
+let years=Number(document.getElementById("years").value);
+
+let reward=(salary/2)*years;
+
+document.getElementById("serviceResult").innerHTML=
+"مكافأة نهاية الخدمة التقديرية: "+reward.toLocaleString()+" ريال";
+}
+
+</script>
+
+</body>
+</html>
