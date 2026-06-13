@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حاسبة ضريبة القيمة المضافة | VAT Calculator</title>
+<meta name="description" content="احسب ضريبة القيمة المضافة 15% بسهولة في السعودية.">
+<style>
+body{margin:0;font-family:Arial,Tahoma,sans-serif;background:#f4f6f8;color:#1f2937}
+header{background:#0f172a;color:white;padding:32px 20px;text-align:center}
+nav{background:#111827;padding:12px;text-align:center}
+nav a{color:white;text-decoration:none;margin:8px;display:inline-block}
+.container{max-width:850px;margin:auto;padding:20px}
+.card{background:white;padding:22px;border-radius:16px;box-shadow:0 4px 14px rgba(0,0,0,.08)}
+label{font-weight:bold;display:block;margin-top:12px}
+input{width:100%;padding:13px;margin-top:7px;border:1px solid #ddd;border-radius:10px;box-sizing:border-box}
+button{width:100%;padding:14px;margin-top:16px;border:0;border-radius:10px;background:#2563eb;color:white}
+.result{background:#f1f5f9;padding:16px;border-radius:10px;margin-top:16px;font-weight:bold;line-height:1.9}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>حاسبة ضريبة القيمة المضافة</h1>
+<p>احسب الضريبة وإجمالي السعر بعد الضريبة</p>
+</header>
+
+<nav>
+<a href="index.html">الرئيسية</a>
+<a href="vat.html">ضريبة القيمة المضافة</a>
+</nav>
+
+<div class="container">
+
+<div class="card">
+
+<label>السعر قبل الضريبة</label>
+<input id="amount" type="number" placeholder="1000">
+
+<button onclick="calc()">احسب</button>
+
+<div id="result" class="result"></div>
+
+</div>
+
+</div>
+
+<script>
+function format(n){
+return Math.round(n).toLocaleString("ar-SA");
+}
+
+function calc(){
+
+let amount = Number(document.getElementById("amount").value) || 0;
+
+let vat = amount * 0.15;
+let total = amount + vat;
+
+document.getElementById("result").innerHTML =
+`قيمة الضريبة: ${format(vat)} ريال<br>
+السعر بعد الضريبة: ${format(total)} ريال`;
+
+}
+</script>
+
+</body>
+</html>
