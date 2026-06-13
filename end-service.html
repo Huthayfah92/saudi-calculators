@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حاسبة نهاية الخدمة | حساب مكافأة نهاية الخدمة في السعودية</title>
+<meta name="description" content="احسب مكافأة نهاية الخدمة في السعودية بطريقة سهلة وسريعة حسب الراتب وعدد سنوات الخدمة.">
+<style>
+body{margin:0;font-family:Arial,Tahoma,sans-serif;background:#f4f6f8;color:#1f2937}
+header{background:#0f172a;color:white;padding:32px 20px;text-align:center}
+nav{background:#111827;padding:12px;text-align:center}
+nav a{color:white;text-decoration:none;margin:8px;display:inline-block}
+.container{max-width:850px;margin:auto;padding:20px}
+.card{background:white;padding:22px;border-radius:16px;box-shadow:0 4px 14px rgba(0,0,0,.08);margin-bottom:22px}
+label{font-weight:bold;display:block;margin-top:12px}
+input,select{width:100%;padding:13px;margin-top:7px;border:1px solid #ddd;border-radius:10px;font-size:16px;box-sizing:border-box}
+button{width:100%;padding:14px;margin-top:16px;border:0;border-radius:10px;background:#2563eb;color:white;font-size:17px}
+.result{background:#f1f5f9;padding:16px;border-radius:10px;margin-top:16px;font-weight:bold;line-height:1.9}
+.note{font-size:15px;color:#64748b;line-height:1.9}
+footer{text-align:center;padding:25px;color:#64748b;font-size:14px}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>حاسبة نهاية الخدمة</h1>
+<p>احسب مكافأة نهاية الخدمة بشكل تقديري</p>
+</header>
+
+<nav>
+<a href="index.html">الرئيسية</a>
+<a href="salary.html">حاسبة الراتب</a>
+<a href="end-service.html">نهاية الخدمة</a>
+<a href="about.html">من نحن</a>
+<a href="contact.html">اتصل بنا</a>
+</nav>
+
+<div class="container">
+
+<div class="card">
+<h2>احسب مكافأة نهاية الخدمة</h2>
+
+<label>آخر راتب شهري</label>
+<input id="salary" type="number" placeholder="مثال: 8000">
+
+<label>عدد سنوات الخدمة</label>
+<input id="years" type="number" placeholder="مثال: 7">
+
+<label>سبب انتهاء العلاقة</label>
+<select id="reason">
+<option value="employer">إنهاء من صاحب العمل</option>
+<option value="resignation">استقالة</option>
+</select>
+
+<button onclick="calculateEOS()">احسب المكافأة</button>
+
+<div id="result" class="result"></div>
+</div>
+
+<div class="card">
+<h2>شرح حاسبة نهاية الخدمة</h2>
+<p class="note">
+تقوم هذه الحاسبة بحساب مكافأة نهاية الخدمة بشكل تقديري بناءً على آخر راتب شهري وعدد سنوات الخدمة.
+</p>
+
+<p class="note">
+يتم احتساب نصف راتب عن كل سنة من أول خمس سنوات، وراتب كامل عن كل سنة بعد ذلك. وقد تختلف النتيجة النهائية بحسب تفاصيل العقد ونظام العمل السعودي.
+</p>
+</div>
+
+</div>
+
+<footer>
+© 2026 مركز الحاسبات السعودية — النتائج تقديرية وليست استشارة قانونية.
+</footer>
+
+<script>
+function format(n){
+return Math.round(n).toLocaleString("ar-SA");
+}
+
+function calculateEOS(){
+
+let salary = Number(document.getElementById("salary").value) || 0;
+let years = Number(document.getElementById("years").value) || 0;
+let reason = document.getElementById("reason").value;
+
+let reward = 0;
+
+if(years <= 5){
+reward = (salary / 2) * years;
+}else{
+reward = (salary / 2) * 5 + salary * (years - 5);
+}
+
+if(reason === "resignation"){
+if(years < 2){
+reward = 0;
+}else if(years < 5){
+reward = reward / 3;
+}else if(years < 10){
+reward = reward * 2 / 3;
+}
+}
+
+document.getElementById("result").innerHTML =
+`مكافأة نهاية الخدمة التقديرية: ${format(reward)} ريال`;
+
+}
+</script>
+
+</body>
+</html>
