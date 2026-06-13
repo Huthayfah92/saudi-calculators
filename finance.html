@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حاسبة التمويل | حساب القسط الشهري وإجمالي السداد</title>
+<meta name="description" content="احسب القسط الشهري للتمويل في السعودية بناءً على مبلغ التمويل، مدة السداد، ونسبة الربح السنوية.">
+<style>
+body{margin:0;font-family:Arial,Tahoma,sans-serif;background:#f4f6f8;color:#1f2937}
+header{background:#0f172a;color:white;padding:32px 20px;text-align:center}
+nav{background:#111827;padding:12px;text-align:center}
+nav a{color:white;text-decoration:none;margin:8px;display:inline-block}
+.container{max-width:850px;margin:auto;padding:20px}
+.card{background:white;padding:22px;border-radius:16px;box-shadow:0 4px 14px rgba(0,0,0,.08);margin-bottom:22px}
+label{font-weight:bold;display:block;margin-top:12px}
+input{width:100%;padding:13px;margin-top:7px;border:1px solid #ddd;border-radius:10px;font-size:16px;box-sizing:border-box}
+button{width:100%;padding:14px;margin-top:16px;border:0;border-radius:10px;background:#2563eb;color:white;font-size:17px}
+.result{background:#f1f5f9;padding:16px;border-radius:10px;margin-top:16px;font-weight:bold;line-height:1.9}
+.note{font-size:15px;color:#64748b;line-height:1.9}
+footer{text-align:center;padding:25px;color:#64748b;font-size:14px}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>حاسبة التمويل</h1>
+<p>احسب القسط الشهري وإجمالي السداد بشكل تقديري</p>
+</header>
+
+<nav>
+<a href="index.html">الرئيسية</a>
+<a href="salary.html">حاسبة الراتب</a>
+<a href="end-service.html">نهاية الخدمة</a>
+<a href="finance.html">حاسبة التمويل</a>
+<a href="about.html">من نحن</a>
+<a href="contact.html">اتصل بنا</a>
+</nav>
+
+<div class="container">
+
+<div class="card">
+<h2>احسب القسط الشهري</h2>
+
+<label>مبلغ التمويل</label>
+<input id="amount" type="number" placeholder="مثال: 100000">
+
+<label>مدة التمويل بالأشهر</label>
+<input id="months" type="number" placeholder="مثال: 60">
+
+<label>نسبة الربح السنوية (%)</label>
+<input id="rate" type="number" placeholder="مثال: 5">
+
+<button onclick="calculateFinance()">احسب التمويل</button>
+
+<div id="result" class="result"></div>
+</div>
+
+<div class="card">
+<h2>شرح حاسبة التمويل</h2>
+<p class="note">
+تساعدك حاسبة التمويل على معرفة القسط الشهري التقريبي بناءً على مبلغ التمويل، مدة السداد، ونسبة الربح السنوية.
+</p>
+<p class="note">
+النتائج تقديرية وقد تختلف عن عروض البنوك وشركات التمويل حسب الرسوم، التأمين، الشروط الائتمانية، ونوع المنتج التمويلي.
+</p>
+</div>
+
+</div>
+
+<footer>
+© 2026 مركز الحاسبات السعودية — النتائج تقديرية وليست استشارة مالية.
+</footer>
+
+<script>
+function format(n){
+return Math.round(n).toLocaleString("ar-SA");
+}
+
+function calculateFinance(){
+
+let amount = Number(document.getElementById("amount").value) || 0;
+let months = Number(document.getElementById("months").value) || 0;
+let rate = Number(document.getElementById("rate").value) || 0;
+
+if(months <= 0){
+document.getElementById("result").innerHTML = "الرجاء إدخال مدة تمويل صحيحة.";
+return;
+}
+
+let profit = amount * (rate / 100) * (months / 12);
+let total = amount + profit;
+let monthly = total / months;
+
+document.getElementById("result").innerHTML =
+`إجمالي الربح التقريبي: ${format(profit)} ريال<br>
+إجمالي السداد: ${format(total)} ريال<br>
+القسط الشهري التقريبي: ${format(monthly)} ريال`;
+
+}
+</script>
+
+</body>
+</html>
