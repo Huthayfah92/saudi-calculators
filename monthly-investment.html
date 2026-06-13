@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حاسبة الاستثمار الشهري | كم سيصبح استثمارك مستقبلاً؟</title>
+<meta name="description" content="احسب القيمة المستقبلية لاستثمارك الشهري مع العائد المركب بطريقة سهلة ومجانية.">
+<style>
+body{margin:0;font-family:Arial,Tahoma,sans-serif;background:#f4f6f8;color:#1f2937}
+header{background:#0f172a;color:white;padding:32px 20px;text-align:center}
+nav{background:#111827;padding:12px;text-align:center}
+nav a{color:white;text-decoration:none;margin:8px;display:inline-block}
+.container{max-width:850px;margin:auto;padding:20px}
+.card{background:white;padding:22px;border-radius:16px;box-shadow:0 4px 14px rgba(0,0,0,.08);margin-bottom:22px}
+label{font-weight:bold;display:block;margin-top:12px}
+input{width:100%;padding:13px;margin-top:7px;border:1px solid #ddd;border-radius:10px;font-size:16px;box-sizing:border-box}
+button{width:100%;padding:14px;margin-top:16px;border:0;border-radius:10px;background:#2563eb;color:white;font-size:17px}
+.result{background:#f1f5f9;padding:16px;border-radius:10px;margin-top:16px;font-weight:bold;line-height:1.9}
+.note{font-size:15px;color:#64748b;line-height:1.9}
+footer{text-align:center;padding:25px;color:#64748b;font-size:14px}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>حاسبة الاستثمار الشهري</h1>
+<p>اكتشف كم قد يصبح استثمارك مع مرور الوقت</p>
+</header>
+
+<nav>
+<a href="index.html">الرئيسية</a>
+<a href="monthly-investment.html">الاستثمار الشهري</a>
+<a href="about.html">من نحن</a>
+</nav>
+
+<div class="container">
+
+<div class="card">
+<h2>احسب استثمارك</h2>
+
+<label>المبلغ الشهري</label>
+<input id="monthly" type="number" placeholder="500">
+
+<label>عدد السنوات</label>
+<input id="years" type="number" placeholder="10">
+
+<label>العائد السنوي (%)</label>
+<input id="rate" type="number" placeholder="12">
+
+<button onclick="calc()">احسب</button>
+
+<div id="result" class="result"></div>
+</div>
+
+<div class="card">
+<h2>كيف تعمل الحاسبة؟</h2>
+<p class="note">
+تعتمد الحاسبة على مبدأ العائد المركب، حيث يتم استثمار الأرباح مع رأس المال مما يزيد النمو مع مرور السنوات.
+</p>
+</div>
+
+</div>
+
+<footer>
+© 2026 مركز الحاسبات السعودية
+</footer>
+
+<script>
+function format(n){
+return Math.round(n).toLocaleString("ar-SA");
+}
+
+function calc(){
+
+let monthly = Number(document.getElementById("monthly").value) || 0;
+let years = Number(document.getElementById("years").value) || 0;
+let annualRate = Number(document.getElementById("rate").value) || 0;
+
+let months = years * 12;
+let r = annualRate / 100 / 12;
+
+let future = 0;
+
+for(let i=0;i<months;i++){
+future = (future + monthly) * (1 + r);
+}
+
+let invested = monthly * months;
+let profit = future - invested;
+
+document.getElementById("result").innerHTML =
+`إجمالي المبالغ المستثمرة: ${format(invested)} ريال<br>
+الأرباح المتوقعة: ${format(profit)} ريال<br>
+القيمة المستقبلية: ${format(future)} ريال`;
+
+}
+</script>
+
+</body>
+</html>
